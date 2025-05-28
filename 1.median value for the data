@@ -1,0 +1,25 @@
+# Define the class intervals and frequencies
+classes = [(1, 5), (5, 15), (15, 20), (20, 50), (50, 80), (80, 110)]
+frequencies = [200, 450, 300, 1500, 700, 44]
+
+# Total frequency
+N = sum(frequencies)
+half_N = N / 2
+
+# Find median class
+cumulative = 0
+for i, freq in enumerate(frequencies):
+    cumulative += freq
+    if cumulative >= half_N:
+        median_class_index = i
+        break
+
+L = classes[median_class_index][0]
+F = sum(frequencies[:median_class_index])
+f = frequencies[median_class_index]
+h = classes[median_class_index][1] - classes[median_class_index][0]
+
+# Median formula
+median = L + ((half_N - F) / f) * h
+
+print(f"Approximate Median = {median:.2f}")
