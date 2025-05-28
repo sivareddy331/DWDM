@@ -1,0 +1,46 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy.stats as stats
+
+ages =    [23, 23, 27, 27, 39, 41, 47, 49, 50, 52, 54, 54, 56, 57, 58, 58, 60, 61]
+fat_pct = [9.5, 26.5, 7.8, 17.8, 31.4, 25.9, 27.4, 27.2, 31.2,
+           34.6, 42.5, 28.8, 33.4, 30.2, 34.1, 32.9, 41.2, 35.7]
+
+def describe(data, name):
+    print(f"{name}:")
+    print(f"  Mean: {np.mean(data):.2f}")
+    print(f"  Median: {np.median(data):.2f}")
+    print(f"  Standard Deviation: {np.std(data, ddof=1):.2f}\n")
+
+describe(ages, "Age")
+describe(fat_pct, "%Fat")
+
+plt.figure(figsize=(10, 5))
+
+plt.subplot(1, 2, 1)
+sns.boxplot(data=ages, color='skyblue')
+plt.title("Boxplot of Age")
+
+plt.subplot(1, 2, 2)
+sns.boxplot(data=fat_pct, color='salmon')
+plt.title("Boxplot of %Fat")
+
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+plt.scatter(ages, fat_pct, color='purple')
+plt.title("Scatter Plot: Age vs %Fat")
+plt.xlabel("Age")
+plt.ylabel("%Fat")
+plt.grid(True)
+
+plt.subplot(1, 2, 2)
+stats.probplot(fat_pct, dist="norm", plot=plt)
+plt.title("Q-Q Plot of %Fat")
+
+plt.tight_layout()
+plt.show()
