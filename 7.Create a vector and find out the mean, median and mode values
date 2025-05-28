@@ -1,0 +1,18 @@
+
+pencils <- c(9, 25, 23, 12, 11, 6, 7, 8, 9, 10)
+
+mean_val <- mean(pencils)
+cat("Mean:", mean_val, "\n")
+
+median_val <- median(pencils)
+cat("Median:", median_val, "\n")
+
+get_mode <- function(v) {
+  uniq_vals <- unique(v)
+  freq <- tabulate(match(v, uniq_vals))
+  mode_val <- uniq_vals[freq == max(freq)]
+  return(mode_val)
+}
+
+mode_val <- get_mode(pencils)
+cat("Mode:", mode_val, "\n")
