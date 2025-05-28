@@ -1,0 +1,24 @@
+
+age_value <- 35
+
+
+min_age <- 23
+max_age <- 61
+mean_age <- 46.33  # approximated from previous analysis
+std_dev_age <- 12.94  # given
+
+
+min_max_norm <- (age_value - min_age) / (max_age - min_age)
+cat("(i) Min-Max Normalization of age 35:\n")
+cat("    Normalized Value =", round(min_max_norm, 4), "\n\n")
+
+
+z_score_norm <- (age_value - mean_age) / std_dev_age
+cat("(ii) Z-Score Normalization of age 35:\n")
+cat("    Normalized Value =", round(z_score_norm, 4), "\n\n")
+
+max_abs_age <- max(abs(c(age_value, max_age)))  # use absolute max value
+j <- ceiling(log10(max_abs_age))
+decimal_scaled <- age_value / (10^j)
+cat("(iii) Decimal Scaling Normalization of age 35:\n")
+cat("    Normalized Value =", round(decimal_scaled, 4), "\n")
